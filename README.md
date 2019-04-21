@@ -1,4 +1,6 @@
 # MacUtilsApp
+![alt text](icon.png "Title")
+
 This is a basic utility application to execute basic macOS commands which are not available through GUI.
 
 Tested on macOS High Sierra. If you find any bugs, the operating system conflictions and feature requests, you can post to Issues tab.
