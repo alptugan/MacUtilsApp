@@ -1,13 +1,16 @@
 from tkinter import *
 import os
 import sys
+from os import system
+from platform import system as platform
 
 
 class Root(Tk):
     def __init__(self):
         super(Root, self).__init__()
-        self.lift()
 
+
+    
         # variables
         self.var1     = IntVar()
         self.varFiles = IntVar()
@@ -18,7 +21,9 @@ class Root(Tk):
         self.toggle3 = Checkbutton()
 
         self.title("Mac OS X Utilities")
-        self.minsize(275,170)
+        self.geometry('275x150')
+        #self.minsize(275,170)
+        self.resizable(width=False, height=False)
         #self.maxsize(475,170)
         #self.configure(background = '#ffffff')
 
@@ -35,27 +40,58 @@ class Root(Tk):
         self.createPowerPlugSound()
 
         # make Esc exit the program
-        self.bind('<Escape>', lambda e: self.save_state)
+        self.bind('<Escape>', self.save_state)
+        self.createcommand('exit', self.save_and_exit)
         # sys.exit()
 
         # create a menu bar with an Exit command
         menubar = Menu(self)
         filemenu = Menu(menubar, tearoff=0)
         filemenu.add_command(label="Exit", command=self.save_state)
+        filemenu.add_command(label="About")
         menubar.add_cascade(label="File", menu=filemenu)
         self.config(menu=menubar)
         
         # root is your root window
-        self.protocol('WM_DELETE_WINDOW', self.save_state)  
+        self.protocol('WM_DELETE_WINDOW',self.save_state)  
         
         # load previous state
         self.load_state()
+
         #print(str(self.var1.get()) + ',' + str(self.varFiles.get()))
 
-        script = 'tell application "System Events" to set frontmost of the first process whose unix id is {pid} to true'.format(pid=os.getpid())
-        os.system("/usr/bin/osascript -e '{script}'".format(script=script))
+        #self.attributes("-topmost", True) # this also works
+        #self.lift()
+        #self.focus()
+        
+        # Set window position
+        self.setWindowsPosition()
 
-    def save_state(self):
+        # put foremost
+        if platform() == 'Darwin':  # How Mac OS X is identified by Python
+            system('''/usr/bin/osascript -e 'tell app "Finder" to set frontmost of process "Python" to true' ''')
+        
+        # focus
+        self.focus_force()
+    
+    def save_and_exit(self):
+        self.save_state()
+        sys.exit()
+
+    def setWindowsPosition(self):
+        # Gets the requested values of the height and widht.
+        windowWidth = self.winfo_reqwidth()
+        windowHeight = self.winfo_reqheight()
+        
+
+        # Gets both half the screen width/height and window width/height
+        positionRight = int(self.winfo_screenwidth()*0.5 - windowWidth*0.5)
+        positionDown = int(self.winfo_screenheight()*0.5 - windowHeight*0.5)
+
+        # Positions the window in the center of the page.
+        self.geometry("+{}+{}".format(positionRight, positionDown))
+
+    def save_state(self, *event):
         file = open('profiles.txt', 'w')
         file.write(str(self.var1.get()) + ',' 
         + str(self.varFiles.get()) + ',' 

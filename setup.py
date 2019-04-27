@@ -19,8 +19,8 @@ OPTIONS = {
         'CFBundleDisplayName': APP_NAME,
         'CFBundleGetInfoString': "Set of Utilities to change operating system features",
         'CFBundleIdentifier': "com.alptugan.macosutility",
-        'CFBundleVersion': "0.1.0",
-        'CFBundleShortVersionString': "0.1.0",
+        'CFBundleVersion': "0.0.1",
+        'CFBundleShortVersionString': "0.0.2",
         'NSHumanReadableCopyright': "Copyright © 2019, Alp Tuğan, All Rights Reserved"
     }
 }
