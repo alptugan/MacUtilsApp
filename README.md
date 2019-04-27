@@ -1,6 +1,10 @@
 # MacUtilsApp
 ![alt text](icon.png "Title")
 
+### Installation & tutorial
+[![Click to view tutorial video](http://img.youtube.com/vi/hDjdBSAk9Go/0.jpg)](http://www.youtube.com/watch?v=hDjdBSAk9Go)
+
+
 This is a basic utility application to execute basic macOS commands which are not available through GUI.
 
 Tested on macOS High Sierra. If you find any bugs, the operating system conflictions and feature requests, you can post to Issues tab.
