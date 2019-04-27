@@ -1,7 +1,9 @@
 # MacUtilsApp
-![alt text](icon.png "Title")
+![alt text](icon.png "Logo")
 
 ### Installation & tutorial
+-> [Download the final release](https://github.com/alptugan/MacUtilsApp/releases/download/0.1.1/MacOS.Utility.zip) 
+
 [![Click to view tutorial video](http://img.youtube.com/vi/hDjdBSAk9Go/0.jpg)](http://www.youtube.com/watch?v=hDjdBSAk9Go)
 
 
